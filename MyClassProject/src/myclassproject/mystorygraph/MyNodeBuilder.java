@@ -20,6 +20,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
+		//test 
 	}
 	@BuilderMethod
 	public void KnockOnDoorActions() {
