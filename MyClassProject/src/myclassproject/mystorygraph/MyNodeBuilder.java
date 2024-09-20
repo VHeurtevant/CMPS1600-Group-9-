@@ -21,4 +21,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
 	}
+	public void CreateAll()  {
+		var root = get(NodeLabels.root.toString());
+		root.add(new CreateAll(List.of(spookypath, , ))
+	}
 }
