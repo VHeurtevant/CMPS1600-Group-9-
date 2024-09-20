@@ -20,14 +20,11 @@ public class MyNodeBuilder extends NodeBuilder {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
-
-		var root = get(NodeLabels.root.toString());
-		// viv 
-		
+	
+	@BuilderMethod
+	public void Actions() {
 
 	}
-	public void CreateAll()  {
-		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(spookypath, , ))
-	}
+
+	
 }
