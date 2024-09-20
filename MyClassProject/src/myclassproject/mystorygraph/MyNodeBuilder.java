@@ -1,8 +1,21 @@
 package myclassproject.mystorygraph;
 
+import static myclassproject.questexample.QuestStoryEntities.bandit;
+import static myclassproject.questexample.QuestStoryEntities.cottage;
+import static myclassproject.questexample.QuestStoryEntities.player;
+import static myclassproject.questexample.QuestStoryEntities.sword;
+import static myclassproject.questexample.QuestStoryEntities.town;
+
 import java.util.List;
 
+import com.actions.Draw;
+import com.actions.Face;
+import com.actions.SetPosition;
+import com.sequences.CreateAll;
+import com.sequences.CreateCharacterSequence;
 import com.storygraph.*;
+
+import myclassproject.questexample.NodeLabels;
 
 public class MyNodeBuilder extends NodeBuilder {
 	public MyNodeBuilder(List<Node> list) {
@@ -20,12 +33,16 @@ public class MyNodeBuilder extends NodeBuilder {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
-		//test 
-	}
+		var root = get(NodeLabels.root.toString());
+		root.add(new CreateAll(List.of(ForestPath, town, sword))).add(new CreateCharacterSequence(bandit))
+				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
+				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
+		//test 	}
 	@BuilderMethod
-	public void KnockOnDoorActions() {
-
+	public void KnockOnDoorActions() {		
 	}
+		
+		
 	@BuilderMethod
 	public void OutsideManorActions() {
 
@@ -122,4 +139,6 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void GoodEndingActions() {
 
 	}
-}
+
+	
+	//Sara Vannoni
