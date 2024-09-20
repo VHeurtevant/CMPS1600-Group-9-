@@ -2,10 +2,7 @@ package myclassproject.mystorygraph;
 
 import java.util.List;
 
-import com.actions.IAction;
 import com.storygraph.*;
-
-import myclassproject.questexample.NodeLabels;
 
 public class MyNodeBuilder extends NodeBuilder {
 	public MyNodeBuilder(List<Node> list) {
@@ -13,7 +10,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	}
 
 	/**
-	 * Write a method for each node.
+	 * Write a method for each node. 
 	 * Use get to get a reference to the node using its label.
 	 * The method adds Camelot actions that execute in order when visiting that node. 
 	 * These methods must have a BuilderMethod annotation.
@@ -23,11 +20,14 @@ public class MyNodeBuilder extends NodeBuilder {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
+
 		var root = get(NodeLabels.root.toString());
 		// viv 
 		
-	}
-		
-	
-}
 
+	}
+	public void CreateAll()  {
+		var root = get(NodeLabels.root.toString());
+		root.add(new CreateAll(List.of(spookypath, , ))
+	}
+}
