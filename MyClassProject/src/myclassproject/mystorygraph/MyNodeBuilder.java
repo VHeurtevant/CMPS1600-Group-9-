@@ -13,7 +13,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	}
 
 	/**
-	 * Write a method for each node. .
+	 * Write a method for each node.
 	 * Use get to get a reference to the node using its label.
 	 * The method adds Camelot actions that execute in order when visiting that node. 
 	 * These methods must have a BuilderMethod annotation.
