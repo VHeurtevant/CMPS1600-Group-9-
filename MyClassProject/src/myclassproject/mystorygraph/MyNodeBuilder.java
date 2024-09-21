@@ -91,6 +91,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void MasterBedroomActions() {
 		var node = get(MyNodeLabels.MasterBedroom.toString());
+		node.add(new DisableInput()).add(new Exit(player, placeholder, true)).add(new Enter(player, placeholder, true)).add(new EnableInput());
 		
 	}
 	@BuilderMethod
