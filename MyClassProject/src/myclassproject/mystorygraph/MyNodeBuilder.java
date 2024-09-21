@@ -144,7 +144,8 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void EatChickenRouteBActions() {
 		var node = get(NodeLabels.EatChickenRouteB.toString));
-		
+		node.add(new Pickup(player, ChickenWing)).add(new Mouth(player, ChickenWing));
+
 //		Eat Chicken -> bad ending death
 	}
 	
