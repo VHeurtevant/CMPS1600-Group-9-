@@ -14,7 +14,9 @@ import com.actions.SetPosition;
 import com.sequences.CreateAll;
 import com.sequences.CreateCharacterSequence;
 import com.storygraph.*;
-
+import com.actions.*;
+import com.sequences.*;
+import com.entities.*;
 import myclassproject.questexample.NodeLabels;
 
 public class MyNodeBuilder extends NodeBuilder {
@@ -32,36 +34,51 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void rootActions() {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
-		//root.add(new CreateAll(List.of(cottage, town, sword)));
-		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(ForestPath, town, sword))).add(new CreateCharacterSequence(bandit))
-				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
-				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
-		//test 	}
+		//root.add(new CreateAll(List.of(cottage, town, sword))); 
+		
+		
+		//root.add(new CreateAll(List.of(ForestPath, town, sword))).add(new CreateCharacterSequence(bandit))
+		//		.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
+		//		.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
+		}
+	
+	// Viv Heurtevant
 	@BuilderMethod
-	public void KnockOnDoorActions() {		
+	public void OutsideManorActions() {	
+		var node = get(MyNodeLabels.OutsideManor.toString());
+		node.add(new HideMenu()).add(new EnableInput());
+		
 	}
 		
 		
 	@BuilderMethod
-	public void OutsideManorActions() {
+	public void KnockOnDoorActions() {
+		var node = get(MyNodeLabels.KnockOnDoor.toString());
+		node.add(new NarrationSequence("No one answered the door. Perhaps you should explore outside."));
 
 	}
 	@BuilderMethod
 	public void LookInBushesActions() {
+		var node = get(MyNodeLabels.LookInBushes.toString());
+		node.add(new HideNarration()).add(new Pickup(player, BlueBook)).add(new Pocket(player, BlueBook));
 
 	}
 	@BuilderMethod
 	public void UnderDoormatActions() {
+		var node = get(MyNodeLabels.UnderDoormat.toString());
+		node.add(new Pickup(player, BlueKey)).add(new OpenFurniture(Door)).add(new Pocket(player, BlueKey));
+		
 
 	}
 	@BuilderMethod
 	public void EnterManorActions() {
-
+		var node = get(MyNodeLabels.EnterManor.toString());
+		node.add(new DisableInput()).add(new Exit(player, placeholder, true)).add(new Enter(player, placeholder, true)).add(new EnableInput());
 	}
 	@BuilderMethod
 	public void MasterBedroomActions() {
-
+		var node = get(MyNodeLabels.MasterBedroom.toString());
+		
 	}
 	@BuilderMethod
 	public void WifeAlibiActions() {
@@ -139,6 +156,6 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void GoodEndingActions() {
 
 	}
-
+}
 	
 	//Sara Vannoni
