@@ -35,7 +35,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
 		var root = get(NodeLabels.root.toString());
 		root.add(new CreateAll(List.of(ForestPath, town, sword))).add(new CreateCharacterSequence(bandit))
-				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
+				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, ForestPath, "Chest"))
 				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
 		//test 	}
 	@BuilderMethod
