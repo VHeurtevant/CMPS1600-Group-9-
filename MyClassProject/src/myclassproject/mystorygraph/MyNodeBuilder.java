@@ -28,13 +28,15 @@ public class MyNodeBuilder extends NodeBuilder {
 	 * The method adds Camelot actions that execute in order when visiting that node. 
 	 * These methods must have a BuilderMethod annotation.
 	 */
+	//mohini yadav 
+	
 	@BuilderMethod
 	public void rootActions() {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
 		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(ForestPath, BlueKey, ChickenLeg,))).add(new CreateCharacterSequence(bandit))
+		root.add(new CreateAll(List.of(ForestPath, BlueKey, ChickenLeg, BlueBook, BlueCloth,))).add(new CreateCharacterSequence(bandit))
 				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, ForestPath, "Chest"))
 				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
 		//test 	}
