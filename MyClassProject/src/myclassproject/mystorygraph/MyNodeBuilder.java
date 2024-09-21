@@ -52,8 +52,8 @@ public class MyNodeBuilder extends NodeBuilder {
 <<<<<<< HEAD
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
 		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(ForestPath, BlueKey, ChickenLeg, BlueBook, BlueCloth,))).add(new CreateCharacterSequence(bandit))
-				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, ForestPath, "Chest"))
+		root.add(new CreateAll(List.of(ForestPath, BlueKey, ChickenLeg, BlueBook, PurpleCloth, Skull, BluePotion, DiningRoom, CastleBedroom, Cottage ))).add(new CreateCharacterSequence(bandit))
+				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, ForestPath))
 				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
 		//test 	}
 =======
@@ -64,6 +64,8 @@ public class MyNodeBuilder extends NodeBuilder {
 		//		.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
 		//		.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
 		}
+	\
+	//look at my changes
 	
 	// Viv Heurtevant
 >>>>>>> branch 'main' of https://github.com/VHeurtevant/CMPS1600-Group-9-.git
