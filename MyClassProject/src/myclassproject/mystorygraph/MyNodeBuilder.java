@@ -43,32 +43,24 @@ public class MyNodeBuilder extends NodeBuilder {
 	 * The method adds Camelot actions that execute in order when visiting that node. 
 	 * These methods must have a BuilderMethod annotation.
 	 */
-	//mohini yadav 
+	
+	//Viv Heurtevant
 	
 	@BuilderMethod
 	public void rootActions() {
 		//Example:
 		//var root = get(NodeLabels.root.toString());
-<<<<<<< HEAD
 		//root.add(new CreateAll(List.of(cottage, town, sword)));
 		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(ForestPath, BlueKey, ChickenLeg, BlueBook, PurpleCloth, Skull, BluePotion, DiningRoom, CastleBedroom, Cottage ))).add(new CreateCharacterSequence(bandit))
-				.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, ForestPath))
-				.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
-		//test 	}
-=======
-		//root.add(new CreateAll(List.of(cottage, town, sword))); 
+		root.add(new CreateAll(List.of(CastleCrossroads,GreatHall,DiningRoom,CastleBedroom,Cottage, BlueKey, ChickenLeg, BlueBook, PurpleCloth, Skull, RedPotion, Door)))
+			.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(wife)).add(new CreateCharacterSequence(maid)).add(new CreateCharacterSequence(chef))
+			.add(new SetPosition(player, CastleCrossroads)).add(new SetPosition(wife, CastleBedroom)).add(new SetPosition(maid, Cottage)).add(new SetPosition(chef, DiningHall))
+			.add(new SetCameraFocus(player)).add(new ShowMenu());
+			
 		
-		
-		//root.add(new CreateAll(List.of(ForestPath, town, sword))).add(new CreateCharacterSequence(bandit))
-		//		.add(new CreateCharacterSequence(player)).add(new SetPosition(bandit, cottage, "Chest"))
-		//		.add(new SetPosition(player, cottage)).add(new Face(bandit, player)).add(new Draw(bandit, sword))
 		}
-	\
-	//look at my changes
+
 	
-	// Viv Heurtevant
->>>>>>> branch 'main' of https://github.com/VHeurtevant/CMPS1600-Group-9-.git
 	@BuilderMethod
 	public void OutsideManorActions() {	
 		var node = get(MyNodeLabels.OutsideManor.toString());
@@ -86,7 +78,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void LookInBushesActions() {
 		var node = get(MyNodeLabels.LookInBushes.toString());
-		node.add(new HideNarration()).add(new Pickup(player, BlueBook)).add(new Pocket(player, BlueBook));
+		node.add(new HideNarration()).add(new Pickup(player, BlueBook)).add(new NarrationSequence("You found a journal containing an ominous message scribbled in pink,glittery ink: 'The King Will Pay For This!'. The rest of the pages have been ripped out.")).add(new HideNarration()).add(new Pocket(player, BlueBook));
 
 	}
 	@BuilderMethod
@@ -99,26 +91,37 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void EnterManorActions() {
 		var node = get(MyNodeLabels.EnterManor.toString());
-		node.add(new DisableInput()).add(new Exit(player, placeholder, true)).add(new Enter(player, placeholder, true)).add(new EnableInput());
+		node.add(new DisableInput()).add(new Exit(player, CastleCrossroads, true)).add(new Enter(player, GreatHall, true)).add(new EnableInput());
 	}
 	@BuilderMethod
 	public void MasterBedroomActions() {
 		var node = get(MyNodeLabels.MasterBedroom.toString());
-		node.add(new DisableInput()).add(new Exit(player, placeholder, true)).add(new Enter(player, placeholder, true)).add(new EnableInput());
+		node.add(new DisableInput()).add(new Exit(player, GreatHall, true)).add(new Enter(player, CastleBedroom, true)).add(new EnableInput());
 		
 	}
+	// Mohini Yadav
+	
 	@BuilderMethod
 	public void WifeAlibiActions() {
 
 	}
+	// Viv Heurtevant
+	
 	@BuilderMethod
 	public void PinkGlitterActions() {
-
+		var node = get(MyNodeLabels.PinkGlitter.toString());
+		node.add(new HideNarration()).add(new Pickup(player, RedPotion)).add(new NarrationSequence("A vial of pink glitter. It matches the writing you saw on the journal.").add(new Pocket(player, RedPotion)).add(new HideNarration()));
+		
+		
 	}
 	@BuilderMethod
 	public void LaundryRoomActions() {
+		var node = get(MyNodeLabels.LaundryRoom.toString());
+		node.add(new DisableInput()).add(new Exit(player, GreatHall, true)).add(new Enter(player, Cottage, true)).add(new EnableInput());
 
 	}
+	// Mohini Yadav
+	
 	@BuilderMethod
 	public void MaidAlibiActions() {
 
@@ -147,24 +150,23 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void ChefAlibiRouteBActions() {
 
 	}
+	//Sara Vannoni
+	
 	@BuilderMethod
 	public void EatChickenRouteAActions() {
 
 	}
 	
-	
-	//Sara Vannoni
-	
 	@BuilderMethod
 	public void EatChickenRouteBActions() {
-		var node = get(NodeLabels.EatChickenRouteB.toString));
+		var node = get(MyNodeLabels.EatChickenRouteB.toString());
 		
 //		Eat Chicken -> bad ending death
 	}
 	
 	@BuilderMethod
 	public void BadEndingRouteAActions() {
-		var node = get(NodeLabels.BadEndingRouteA.toString());
+		var node = get(MyNodeLabels.BadEndingRouteA.toString());
 		node.add(new NarrationSequence("You take a bite of chicken. It tastes like cleaning supplies. Oh no!"));
 //		node.add(new HideDialog()).add(new NarrationSequence("You take a bite of chicken. It tastes like cleaning supplies. Oh no!"));
 		node.add(new HideNarration()).add(new FadeOut());
@@ -172,14 +174,14 @@ public class MyNodeBuilder extends NodeBuilder {
 	}
 	@BuilderMethod
 	public void BadEndingRoute1BActions() {
-		var node = get(NodeLabels.BadEndingRoute1B.toString());
+		var node = get(MyNodeLabels.BadEndingRoute1B.toString());
 		node.add(new NarrationSequence("You take a bite of chicken. It tastes like cleaning supplies. Oh no!"));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies from eating chicken (2nd time entry)
 	}
 	@BuilderMethod
 	public void BadEndingRoute2BActions() {
-		var node = get(NodeLabels.BadEndingRoute2B.toString());
+		var node = get(MyNodeLabels.BadEndingRoute2B.toString());
 		node.add(new NarrationSequence("You turn away to continue investigating and feel yourself get stabbed! Oh no!"));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies because he believed chef
@@ -187,37 +189,34 @@ public class MyNodeBuilder extends NodeBuilder {
 
 	@BuilderMethod
 	public void FindSkullActions() {
-		var node = get(NodeLabels.FindSkull.toString());
+		var node = get(MyNodeLabels.FindSkull.toString());
 		node.add(new DialogSequence(player, chef, List.of("What do you do?"),
 				List.of("Believe Chef", "Arrest Chef")));
 //		Player investigates and picks up a skull
 	}	
 	@BuilderMethod
 	public void ArrestChefActions() {
-		var node = get(NodeLabels.ArrestChef.toString());
+		var node = get(MyNodeLabels.ArrestChef.toString());
 		node.add(new NarrationSequence("You handcuff the Chef and take him into custody."));
 //		Player arrests the chef
 	}
 
 	@BuilderMethod
 	public void BelieveChefActions() {
-		var node = get(NodeLabels.BelieveChef.toString());
-		node.add(new HideDialog()).add(new NarrationSequence("The player says 'Ok! I beleive you.'"));
+		var node = get(MyNodeLabels.BelieveChef.toString());
+		node.add(new HideDialog()).add(new NarrationSequence("The player says 'Ok! I believe you.'"));
 //		Player says that he believes chef
 	}
 
 	@BuilderMethod
 	public void GoodEndingActions() {
-		var node = get(NodeLabels.GoodEnding.toString());
+		var node = get(MyNodeLabels.GoodEnding.toString());
 		node.add(new HideNarration()).add(new NarrationSequence("The city police reward you with 10 million gold coins for solving the mystery! You can retire in peace."));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player wins!
 	}
-<<<<<<< HEAD
 
-	}
-=======
+
 }
-	
-	//Sara Vannoni
->>>>>>> branch 'main' of https://github.com/VHeurtevant/CMPS1600-Group-9-
+
+
