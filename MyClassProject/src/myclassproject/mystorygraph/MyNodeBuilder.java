@@ -182,6 +182,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new Die(player));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies from eating chicken (2nd time entry)
+
 	}
 	@BuilderMethod
 	public void BadEndingRoute2BActions() {
