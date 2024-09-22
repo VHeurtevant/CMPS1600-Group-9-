@@ -36,6 +36,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	private static final Item ChickenLeg = null;
 	private static final Characters merchant = null;
 	private static final Item Skull = null;
+	private static final Item Sword = null;
 	public MyNodeBuilder(List<Node> list) {
 		super(list);
 	}
@@ -170,7 +171,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BadEndingRouteAActions() {
 		var node = get(MyNodeLabels.BadEndingRouteA.toString());
 		node.add(new NarrationSequence("You take a bite of chicken. It tastes like poison. Oh no!"));
-//		node.add(new HideDialog()).add(new NarrationSequence("Oh No!"));
+		node.add(new Die(player));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies from eating chicken (early entry to kitchen)
 	}
@@ -178,13 +179,16 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BadEndingRoute1BActions() {
 		var node = get(MyNodeLabels.BadEndingRoute1B.toString());
 		node.add(new NarrationSequence("You take a bite of chicken. It tastes like poison. Oh no!"));
+		node.add(new Die(player));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies from eating chicken (2nd time entry)
 	}
 	@BuilderMethod
 	public void BadEndingRoute2BActions() {
 		var node = get(MyNodeLabels.BadEndingRoute2B.toString());
-		node.add(new NarrationSequence("You turn away to continue investigating and feel yourself get stabbed by the chef's kitchen knife! Oh no!"));
+		node.add(new NarrationSequence("You let your guard down and feel yourself get stabbed by the chef's kitchen knife! Oh no!"));
+		node.add(new Pickup(chef, Sword));
+		node.add(new Die(player));
 		node.add(new HideNarration()).add(new FadeOut());
 		//		Player dies because he believed chef
 	}
@@ -194,8 +198,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.FindSkull.toString());
 		node.add(new Draw(player, Skull));
 //		created constant skull --> check
-		node.add(new DialogSequence(player, merchant, List.of("Do you believe me?"),
-//				created constant merchant --> check
+		node.add(new DialogSequence(player, chef, List.of("Do you believe me?"),
 				List.of("Believe Chef", "Arrest Chef")));
 		node.add(new HideDialog());
 //		do i need this if it's a list of choices
@@ -222,7 +225,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void GoodEndingActions() {
 		var node = get(MyNodeLabels.GoodEnding.toString());
-		node.add(new HideNarration()).add(new NarrationSequence("The city police reward you with 10 million gold coins for solving the mystery! You can retire in peace."));
+		node.add(new NarrationSequence("The city police reward you with 10 million gold coins for solving the mystery! You can retire in peace."));
 		node.add(new HideNarration()).add(new FadeOut());
 //		Player wins!
 	}
