@@ -48,11 +48,8 @@ public class MyNodeBuilder extends NodeBuilder {
 	
 	@BuilderMethod
 	public void rootActions() {
-		//Example:
-		//var root = get(NodeLabels.root.toString());
-		//root.add(new CreateAll(List.of(cottage, town, sword)));
-		var root = get(NodeLabels.root.toString());
-		root.add(new CreateAll(List.of(CastleCrossroads,GreatHall,DiningRoom,CastleBedroom,Cottage, BlueKey, ChickenLeg, BlueBook, PurpleCloth, Skull, RedPotion, Door)))
+		var root = get(MyNodeLabels.root.toString());
+		root.add(new CreateAll(List.of(CastleCrossroads,GreatHall,DiningRoom,CastleBedroom,Cottage, BlueKey, ChickenLeg, BlueBook, PurpleCloth, Skull, RedPotion, Door,Sword)))
 			.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(wife)).add(new CreateCharacterSequence(maid)).add(new CreateCharacterSequence(chef))
 			.add(new SetPosition(player, CastleCrossroads)).add(new SetPosition(wife, CastleBedroom)).add(new SetPosition(maid, Cottage)).add(new SetPosition(chef, DiningHall))
 			.add(new SetCameraFocus(player)).add(new ShowMenu());
