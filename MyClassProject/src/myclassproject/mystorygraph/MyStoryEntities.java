@@ -4,7 +4,6 @@ import com.entities.*;
 import com.enums.FurnitureTypes;
 import com.enums.ItemTypes;
 import com.enums.PlaceTypes;
-//test
 public final class MyStoryEntities {
 	//Create an instance of Character, Place, Furniture, and Item classes 
 	//for each of the characters, places, furniture, and items in your story
